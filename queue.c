@@ -45,30 +45,20 @@ void push(Queue *queue, void *elem) {
         return;
     }
 
-    printf("push\n");
     memcpy(queue->elems + queue->end * queue->elem_type, elem, queue->elem_type);
     queue->end = (queue->end + 1) % queue->capacity;
     queue->size++;
 }
 
-void *pop(Queue *queue) {
+void pop(Queue *queue) {
     if (is_empty(queue)) {
         printf("队列为空，pop 失败\n");
-        return NULL;
+        return;
     }
 
-    void *elem = malloc(queue->elem_type);
-    if (NULL == elem) {
-        perror("malloc elem failure");
-        return NULL;
-    }
-
-    memcpy(elem, queue->elems + queue->front * queue->elem_type, queue->elem_type);
     queue->front = (queue->front + 1) % queue->capacity;
 
     queue->size--;
-
-    return elem;
 }
 
 void free_queue(Queue *queue) {

@@ -17,7 +17,7 @@ Queue* queue_new(uint32_t capacity, uint32_t elem_type);
 bool is_empty(Queue *queue);
 bool is_full(Queue *queue);
 void push(Queue *queue, void *elem);
-void* pop(Queue *queue);
+void pop(Queue *queue);
 void free_queue(Queue *queue);
 
 #endif
