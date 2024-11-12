@@ -1,24 +1,24 @@
+#include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "queue.h"
 
-#define CAPACITY 10
+#define N 10
 
 int main() {
-    Queue *queue = queue_new(CAPACITY, sizeof(int32_t));
+    Queue *queue = queue_new(N, sizeof(int32_t));
     printf("capacity: %d\n", queue->capacity);
 
     int32_t num;
-    for (uint32_t i = 0; i < CAPACITY; i++) {
+    for (uint32_t i = 0; i < N; i++) {
         num = i + 10;
         push(queue, &num);
     }
 
-    for (uint32_t i = 0; i < CAPACITY; i++) {
-        void *elem = pop(queue);
-        if (elem) printf("elem: %d\n", *(int *)elem);
-        free(elem);
+    void *p = queue->elems;
+    for (uint32_t i = 0; i < N - 1; i++){
+        printf("%d ", *(uint32_t*)p);
+        p = p + queue->elem_type;
     }
 
     free_queue(queue);
