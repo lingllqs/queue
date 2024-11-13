@@ -1,8 +1,8 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef struct Queue {
     void *elems;
@@ -13,7 +13,8 @@ typedef struct Queue {
     uint32_t size;
 } Queue;
 
-Queue* queue_new(uint32_t capacity, uint32_t elem_type);
+
+Queue *queue_new(uint32_t capacity, uint32_t elem_type);
 bool is_empty(Queue *queue);
 bool is_full(Queue *queue);
 void push(Queue *queue, void *elem);
