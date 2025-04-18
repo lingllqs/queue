@@ -58,5 +58,5 @@ void test() {
     }
     putchar(10);
 
-    free(queue);
+    free_queue(queue);
 }
