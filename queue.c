@@ -5,7 +5,7 @@
 #include <string.h>
 
 Queue *queue_new(uint32_t capacity, uint32_t elem_type) {
-    if (capacity > 0) {
+    if (capacity > 1) {
         Queue *new_queue = malloc(sizeof(Queue));
         if (NULL == new_queue) {
             perror("malloc new_queue failure");
@@ -26,6 +26,8 @@ Queue *queue_new(uint32_t capacity, uint32_t elem_type) {
         }
 
         return new_queue;
+    } else {
+        printf("队列容量需要大于1，因为是循环队列");
     }
 
     return NULL;
